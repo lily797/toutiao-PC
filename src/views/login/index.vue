@@ -63,7 +63,13 @@ export default {
     login () {
       this.$refs.loginForm.validate(isOK => {
         if (isOK) {
-          alert('成功')
+          // alert('成功')
+          // 发送axios验证token
+          this.$axios.post('/authorizations', this.formData).then(result => {
+            // console.log(result)
+            window.localStorage.setItem('user-info', JSON.stringify(result.data.data))
+            this.$router.push('/')
+          })
         }
       })
     }
