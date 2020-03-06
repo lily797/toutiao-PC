@@ -6,15 +6,15 @@
     </el-col>
     <el-col :span="3" class="user">
      <img :src="user.photo? user.photo:defaultImg" alt="">
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" @command="commandAction">
         <span class="el-dropdown-link">
           {{user.name}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item >个人信息</el-dropdown-item>
-          <el-dropdown-item >git地址</el-dropdown-item>
-          <el-dropdown-item >退出</el-dropdown-item>
+          <el-dropdown-item command="account">个人信息</el-dropdown-item>
+          <el-dropdown-item command="git" >git地址</el-dropdown-item>
+          <el-dropdown-item command="out" >退出</el-dropdown-item>
 
         </el-dropdown-menu>
       </el-dropdown>
@@ -31,6 +31,17 @@ export default {
     }
   },
   methods: {
+    // 下拉菜单触发的事件
+    commandAction (command) {
+      if (command === 'account') {
+
+      } else if (command === 'git') {
+        window.location.href = 'https://github.com/'
+      } else if (command === 'out') {
+        window.localStorage.clear()
+        this.$router.push('/login')
+      }
+    },
     // 发送aixos请求用户信息，携带token
     getUserInfo () {
       const userInfo = window.localStorage.getItem('user-info')
