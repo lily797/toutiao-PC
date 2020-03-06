@@ -5,7 +5,7 @@
       <span>天津理工大学</span>
     </el-col>
     <el-col :span="3" class="user">
-     <img :src="user.photo? user.photo:defaultImg" alt="">
+      <img :src="user.photo? user.photo:defaultImg" alt />
       <el-dropdown trigger="click" @command="commandAction">
         <span class="el-dropdown-link">
           {{user.name}}
@@ -13,9 +13,8 @@
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="account">个人信息</el-dropdown-item>
-          <el-dropdown-item command="git" >git地址</el-dropdown-item>
-          <el-dropdown-item command="out" >退出</el-dropdown-item>
-
+          <el-dropdown-item command="git">git地址</el-dropdown-item>
+          <el-dropdown-item command="out">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
@@ -44,16 +43,12 @@ export default {
     },
     // 发送aixos请求用户信息，携带token
     getUserInfo () {
-      const userInfo = window.localStorage.getItem('user-info')
-      const token = userInfo ? JSON.parse(userInfo).token : null
-      token && this.$axios({
-        url: '/user/profile',
-        headers: { Authorization: 'Bearer ' + token }
+      this.$axios({
+        url: '/user/profile'
       }).then(res => {
         this.user = res.data.data
       })
     }
-
   },
   created () {
     this.getUserInfo()
@@ -75,7 +70,7 @@ export default {
   .user {
     display: flex;
     align-items: center;
-    img{
+    img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
