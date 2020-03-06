@@ -5,10 +5,10 @@
       <span>天津理工大学</span>
     </el-col>
     <el-col :span="3" class="user">
-     <img src="../../assets/img/avatar.jpg" alt="">
+     <img :src="user.photo? user.photo:defaultImg" alt="">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          我是lily
+          {{user.name}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -23,7 +23,31 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      user: {},
+      defaultImg: require('../../assets/img/avatar.jpg')
+    }
+  },
+  methods: {
+    // 发送aixos请求用户信息，携带token
+    getUserInfo () {
+      const userInfo = window.localStorage.getItem('user-info')
+      const token = userInfo ? JSON.parse(userInfo).token : null
+      token && this.$axios({
+        url: '/user/profile',
+        headers: { Authorization: 'Bearer ' + token }
+      }).then(res => {
+        this.user = res.data.data
+      })
+    }
+
+  },
+  created () {
+    this.getUserInfo()
+  }
+}
 </script>
 
 <style lang="less" scoped>

@@ -31,7 +31,7 @@
           <span slot="title">素材管理</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="1">
+      <el-submenu >
         <template slot="title">
           <i class="el-icon-document-copy"></i>
           <span>粉丝管理</span>
