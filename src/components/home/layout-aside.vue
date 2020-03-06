@@ -4,10 +4,6 @@
       <img src="../../assets/img/logo_admin.png" alt />
     </div>
     <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
       background-color="#353e4b"
       text-color="#adafb5"
       active-text-color="#ffd04b"
