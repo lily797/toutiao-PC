@@ -67,7 +67,7 @@ export default {
           // 发送axios验证token
           this.$axios.post('/authorizations', this.formData).then(result => {
             // console.log(result)
-            window.localStorage.setItem('user-info', JSON.stringify(result.data.data))
+            window.localStorage.setItem('user-info', JSON.stringify(result.data))
             this.$router.push('/')
           }).catch(() => {
             // alert('错误')
