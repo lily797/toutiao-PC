@@ -5,6 +5,7 @@
         <!-- 具名插槽占坑 -->
         <slot name="title"></slot>
     </el-breadcrumb-item>
+</el-breadcrumb >
 </template>
 
 <script>
