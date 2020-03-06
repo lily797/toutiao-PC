@@ -34,7 +34,7 @@ export default {
     // 下拉菜单触发的事件
     commandAction (command) {
       if (command === 'account') {
-
+        this.$router.push('/home/account')
       } else if (command === 'git') {
         window.location.href = 'https://github.com/'
       } else if (command === 'out') {
