@@ -69,12 +69,6 @@ export default {
             // console.log(result)
             window.localStorage.setItem('user-info', JSON.stringify(result.data))
             this.$router.push('/')
-          }).catch(() => {
-            // alert('错误')
-            this.$message({
-              message: '您的手机号或验证码不正确',
-              type: 'warning'
-            })
           })
         }
       })
